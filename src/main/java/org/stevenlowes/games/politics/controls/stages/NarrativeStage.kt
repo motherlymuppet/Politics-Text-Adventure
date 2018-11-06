@@ -5,24 +5,16 @@ import org.stevenlowes.games.politics.controls.Constants.Companion.DELAY_BETWEEN
 import org.stevenlowes.games.politics.controls.clearScreen
 import org.stevenlowes.games.politics.controls.printCharacters
 
-open class TextStage(val text: String, val getNextStage: (String) -> GameStage) : GameStage {
+open class NarrativeStage(val text: String, val getNextStage: () -> GameStage): GameStage{
     override fun run(): GameStage {
         clearScreen()
         printCharacters(text)
         Thread.sleep(500)
 
         println()
-        println("Enter your Answer:")
+        println("Press Enter to Continue...")
 
-        while (true) {
-            val inputText = readLine()
-            if (inputText.isNullOrBlank()) {
-                println("Please enter some text")
-            }
-            else{
-                return getNextStage(inputText!!
-                )
-            }
-        }
+        readLine()
+        return getNextStage()
     }
 }
