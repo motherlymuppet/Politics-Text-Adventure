@@ -20,8 +20,7 @@ open class TextStage(val text: String, val getNextStage: (String) -> GameStage) 
                 println("Please enter some text")
             }
             else{
-                return getNextStage(inputText!!
-                )
+                return getNextStage(inputText!!)
             }
         }
     }
